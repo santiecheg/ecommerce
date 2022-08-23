@@ -1,0 +1,453 @@
+@charset "UTF-8";
+* {
+  border: 0px;
+  margin: 0px;
+}
+
+body {
+  background-image: url(https://images.unsplash.com/photo-1518066000714-58c45f1a2c0a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Nnx8fGVufDB8fHx8&w=1000&q=80);
+  background-size: cover;
+  background-position: center;
+}
+
+/*header*/
+header {
+  width: 100%;
+  background-color: rgba(136, 114, 114, 0.24);
+  padding: 0.5em auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.logo {
+  display: inline-flex;
+  justify-content: start;
+}
+
+.block {
+  margin: 0.5em;
+  padding: 0.5em;
+}
+
+.logo_titulo {
+  font-size: 2rem;
+  font-family: roboto;
+  font-weight: 600;
+  color: rgb(66, 201, 32);
+  text-shadow: 0 0 5px black;
+}
+
+.logo_subtitulo {
+  font-size: 1.2rem;
+  color: rgb(127, 164, 233);
+}
+
+.block {
+  display: block;
+  transition: all 0.2;
+}
+
+.block:hover {
+  margin: 0.7em;
+  padding: 0.7em;
+  transition: 0.5s;
+}
+
+.block:hover .logo_subtitulo {
+  color: rgb(66, 201, 32);
+  transform: scale(1.2, 1.2);
+  transition: all 4s;
+}
+
+.block:hover .logo_imagen {
+  transform: scale(1.2, 1.2);
+  transition: all 3s;
+}
+
+.block:hover .logo_titulo {
+  transform: scale(1.3, 1.3);
+  color: rgb(127, 164, 233);
+  transition: all 3s;
+}
+
+.logo_imagen {
+  width: 50px;
+}
+
+.nav-link {
+  color: rgb(66, 201, 32);
+}
+
+.navbar-toggler-icon {
+  background-image: url(./Multimedia/ICONITO.png);
+}
+
+.navbar-toggler {
+  background-color: rgb(66, 201, 32);
+  box-shadow: 0 0 5px black;
+}
+
+.navbar-nav {
+  position: relative;
+  background-color: none;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: rgb(66, 201, 32);
+  text-shadow: 0 0 5px black;
+  font-weight: 900;
+  transition: all 0.3s;
+  font-size: 1.5em;
+}
+
+.nav-link:hover {
+  color: rgb(127, 164, 233);
+  transform: scale(1.2, 1.2);
+  transition: all 0.5;
+}
+
+#actual {
+  color: red;
+}
+
+/*Main*/
+.carousel-item {
+  height: 40vh;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+.carEfecto {
+  font-size: 1rem;
+  text-shadow: 0 0 4px black;
+}
+
+#H3 {
+  font-size: 2.5rem;
+}
+
+h1 {
+  text-align: center;
+  color: rgb(66, 201, 32);
+  text-shadow: 0 0 5px black;
+  height: 50px;
+  margin-top: 1rem;
+}
+
+.contenedor {
+  padding: 1rem;
+}
+
+section {
+  margin: 5rem auto;
+}
+
+.section {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.sectionimg1 {
+  background-image: url(./Multimedia/MOther.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.sectionimg2 {
+  background-image: url(./Multimedia/tecnologia.jpg);
+  background-position: center;
+}
+
+.sectionimg3 {
+  background-image: url(./Multimedia/call-center-CRM-estrategia.jpg);
+  background-position: center;
+}
+
+.sectionimg4 {
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt1VUAVlnaHCWv76KlaSmeA85Ik-ffZdhfHw&usqp=CAU);
+}
+
+.sectionTitulo {
+  font-size: 22px;
+  text-align: center;
+  padding: 1rem;
+  color: whitesmoke;
+  text-transform: uppercase;
+}
+
+.sectionCuerpo {
+  padding: 1rem;
+  color: rgb(66, 201, 32);
+  background-color: rgba(0, 0, 0, 0.785);
+  font-weight: 600;
+  text-shadow: 1px 1px black;
+  text-align: center;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.tecnologia {
+  background-image: url(./Multimedia/MOther.jpg);
+  z-index: 1;
+}
+
+.btn-dark {
+  color: red;
+  background-color: #000000;
+  border-color: rgb(66, 201, 32);
+}
+
+.btn-dark:hover {
+  color: yellow;
+  background-color: black;
+}
+
+.btn-dark:visited {
+  color: yellow;
+  background-color: black;
+}
+
+.card {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.foto {
+  width: 100%;
+}
+
+.registro {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.registro a {
+  font-weight: 600;
+  text-decoration: none;
+  color: red;
+  font-size: 100%;
+}
+
+.registro a:hover {
+  color: rgb(127, 164, 233);
+}
+
+.construccion {
+  background-image: url(./Multimedia/construccion.jpg);
+  background-size: 50vh;
+  background-position: center;
+}
+
+/*footer*/
+.footer {
+  padding: 1rem;
+  background-color: rgba(136, 114, 114, 0.24);
+  display: block;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.contactarOperador {
+  height: 350px;
+  padding: auto;
+  display: flex;
+  text-align: center;
+  justify-content: space-around;
+  align-items: center;
+  background-image: url(./Multimedia/contactanos2.png);
+  background-position: center;
+  background-size: cover;
+}
+
+.offcanvas {
+  color: rgb(66, 201, 32);
+  background-color: rgba(136, 114, 114, 0.24);
+}
+
+.btn-close {
+  transition: 2s;
+  transform: scale(1.2, 1.2);
+  background-color: red;
+}
+
+.contactarOperadorBoton {
+  font-size: 2rem;
+  text-decoration: none;
+  color: blue;
+  cursor: pointer;
+}
+
+.contactarOperadorBoton:hover {
+  color: green;
+}
+
+.card-body {
+  color: white;
+}
+
+.info {
+  color: whitesmoke;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+.info h3 {
+  color: rgb(66, 201, 32);
+}
+
+.redes p {
+  color: red;
+}
+
+.item {
+  padding: 1rem;
+}
+.item h3 {
+  color: white;
+}
+.item i {
+  color: rgb(127, 164, 233);
+  font-size: 4rem;
+}
+
+.fa-whatsapp {
+  text-decoration: none;
+  background-color: #3ec34f;
+  padding: 0.5rem;
+  color: white;
+  font-size: 2rem;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  box-shadow: 2px black;
+  border: solid 1px white;
+  transition: all 0.5s;
+}
+
+.fa-whatsapp:hover {
+  font-size: 3rem;
+  transition: all 0.5s;
+}
+
+.copyright {
+  font-size: 0.6rem;
+  font-style: oblique;
+  font-weight: 600;
+  position: sticky;
+  bottom: 0;
+  text-align: center;
+  color: rgb(66, 201, 32);
+}
+
+.ayuda {
+  font-size: 2rem;
+  color: white;
+  text-shadow: 0 0 10px black;
+  font-family: roboto;
+  background-color: rgba(136, 114, 114, 0.24);
+}
+
+.red--twitter {
+  background: #51aff8;
+  font-size: 40px;
+  color: black;
+}
+.red--twitter:hover {
+  background: white;
+}
+
+.red--facebook {
+  background: blue;
+  font-size: 40px;
+  color: black;
+}
+.red--facebook:hover {
+  background: white;
+}
+
+.red--linkedin {
+  background: #0076b8;
+  font-size: 40px;
+  color: black;
+}
+.red--linkedin:hover {
+  background: white;
+}
+
+.red--youtube {
+  background: red;
+  font-size: 40px;
+  color: black;
+}
+.red--youtube:hover {
+  background: white;
+}
+
+.red--instagram {
+  background: orange;
+  font-size: 40px;
+  color: black;
+}
+.red--instagram:hover {
+  background: white;
+}
+
+/* MEDIAS Y DISEÑO RESPONSIVE*/
+@media only screen and (min-width: 1200px) {
+  #tablaNote {
+    display: block;
+  }
+
+  .nav-link {
+    font-size: 1.2;
+    padding: 1px;
+    margin: 1px;
+  }
+
+  .sectionTitulo {
+    font-size: 40px;
+  }
+
+  .sectionCuerpo {
+    font-size: 25px;
+  }
+
+  .carEfecto {
+    font-size: 2rem;
+    background-color: rgba(245, 245, 220, 0.103);
+    text-shadow: 0 0 4px black;
+  }
+
+  #H3 {
+    font-size: 5rem;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .sectionCuerpo {
+    display: block;
+  }
+
+  .footer {
+    display: block;
+  }
+
+  .info {
+    display: block;
+    text-align: center;
+  }
+
+  .carEfecto {
+    font-size: 1rem;
+    background-color: rgba(245, 245, 220, 0.103);
+    text-shadow: 0 0 4px black;
+  }
+
+  #H3 {
+    font-size: 1.4rem;
+  }
+}
