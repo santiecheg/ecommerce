@@ -1,75 +1,88 @@
-//SECTOR DEPOSITO
-let carrito=[];
+///
 
-function agregarAlCarrito(producto){
-    carrito.push(producto);
-    console.log(carrito);
-    //agrego una fila nueva a la tabla body
-    document.getElementById("tablabody").innerHTML+=`
-        <tr>
-            <td>${producto.modelo}</td>
-            <td>${producto.precio}</td>
-        </tr>
-    `;
-    alert("Producto: "+producto.nombre+" agregado al carrito!");
-    localStorage.setItem("carrito", JSON.stringify(carrito));
+
+///
+let carrito = [];
+
+let contenedorFooterCarrito=document.getElementById("grantotal");
+ 
+const contenedorCarritoCompras = document.getElementById('tablabody');
+
+const contenedorProductos = document.getElementById('contenedor-productos');
+
+///
+dibujarCarrito();
+dibujarCatalogoProductos();
+
+  
+//
+function dibujarCarrito() {
+
+    let sumaCarrito = 0;
+    contenedorCarritoCompras.innerHTML = "";
+
+    carrito.forEach(
+        (elemento) => {
+            let renglonesCarrito= document.createElement("tr");
+            
+            renglonesCarrito.innerHTML = `
+                <td>${elemento.producto.modelo}</td>
+                <td><img src="${elemento.producto.foto}" heigth="100%" width="100%"></td>
+                <td><input id="cantidad-producto-${elemento.producto.id}" type="number" value="${elemento.cantidad}" min="1" max="1000" step="1" style="width: 50px;"/></td>
+                <td>$ ${elemento.producto.precio}</td>
+                <td>$ ${elemento.producto.precio*elemento.cantidad}</td>
+                <td><button id="eliminar-producto-${elemento.producto.id}" type="button" class="btn btn-danger"><i class="bi bi-trash-fill"></i></button></td>
+            `;
+
+            contenedorCarritoCompras.append(renglonesCarrito);
+
+            sumaCarrito+=elemento.cantidad*elemento.producto.precio;
+
+            //eventos de carrito
+            let cantidadProductos = document.getElementById(`cantidad-producto-${elemento.producto.id}`);
+            
+            cantidadProductos.addEventListener("change", (e) => {
+                let nuevaCantidad = e.target.value;
+                elemento.cantidad = nuevaCantidad;
+                dibujarCarrito();
+            });
+
+            let borrarProducto = document.getElementById(`eliminar-producto-${elemento.producto.id}`);
+
+            borrarProducto.addEventListener("click", (e) => {
+                removerProductoCarrito(elemento);
+                dibujarCarrito();
+            });
+
+        }
+    );
+////TERNARIO
+    (carrito.length==0)?
+    contenedorFooterCarrito.innerHTML = `<th scope="row" colspan="5">Carrito vacío - comience a comprar!</th>`: 
+    contenedorFooterCarrito.innerHTML = `<th scope="row" colspan="5">Total de la compra: $${sumaCarrito}</th>`;
+    
+
 }
 
-//FUNCIONALIDADES DEL DEPOSITO//
+function removerProductoCarrito(elementoAEliminar) {
+    const elementosAMantener = carrito.filter((elemento) => elementoAEliminar.producto.id != elemento.producto.id);
+    carrito.length = 0;
 
-function inventario(){
-for (let i=0;i<deposito.length; i++){
-    deposito[i].show();}}
-
-function agregarProduct(){
-    deposito.push (new Producto(
-        prompt("Nombre de producto: ej notebook"),
-        prompt("modelo de producto"),
-        prompt("PRECIO"),
-        prompt("CANTIDAD")
-    ))
-};
-
-function consultar(deposito, Producto){
-    const item=deposito.find((xd)=>xd.modelo==Producto);
-    if (item==undefined){alert('No encuentro ningun producto con ese nombre')}
-    else {console.log(item)}
-};
-
-function catalogo(){
-    const catalog=deposito.map((Producto)=>{
-        return {
-            nombre: Producto.tipo+''+Producto.modelo, 
-            precio: Producto.precio,
-            conIva: (Producto.precio*1.21)
-                }
-        });
-        console.table(catalog);
+    elementosAMantener.forEach((elemento) => carrito.push(elemento));
 }
 
-function buy(deposito, Producto){
-    const produc=deposito.find(xd=>xd.modelo==Producto);
-    if (produc==undefined){alert('No encuentro ningun producto con ese nombre')}
-    else {alert("Procesando su pedido de "+produc.tipo+" "+produc.modelo);produc.vender();}
-};
-////// FIN FUNCIONALIDADES DEPOSITO///
-
-////// CATALOGO/////
-
-///Cards
 function crearCard(producto) {
     //Botón
     let botonAgregar = document.createElement("button");
     botonAgregar.className = "btn btn-success";
     botonAgregar.innerText = "Agregar";
-    botonAgregar.id="btn"+producto.id;
 
     //Card body
     let cuerpoCarta = document.createElement("div");
     cuerpoCarta.className = "card-body";
     cuerpoCarta.innerHTML = `
         <h5>${producto.modelo}</h5>
-        <p>$ ${producto.precio}</p>
+        <p>$ ${producto.precio} USD</p>
     `;
     cuerpoCarta.append(botonAgregar);
 
@@ -85,64 +98,45 @@ function crearCard(producto) {
     carta.append(imagen);
     carta.append(cuerpoCarta);
 
-    //Contenedor Card
+    ////Contenedor
     let contenedorCarta = document.createElement("div");
     contenedorCarta.className = "col-xs-6 col-sm-3 col-md-2";
     contenedorCarta.append(carta);
-  
+
+    botonAgregar.onclick = () => {
+
+        let elementoExistente = carrito.find((elemento) => elemento.producto.id == producto.id);
+
+        if(elementoExistente) {
+            elementoExistente.cantidad+=1;
+        } else {
+            let elementoCarrito = new itemCarro(producto, 1);
+            carrito.push(elementoCarrito);
+        }
+
+        dibujarCarrito();
+        swal({
+            icon: "success",
+            text:"Producto cargado al carrito",
+            title:"Operación Exitosa!"
+          });
+    } 
+    
     return contenedorCarta;
 
 }
-/// dibujar catalogo
+
 function dibujarCatalogoProductos() {
-    rowContenedorProductos.innerHTML = "";
+    contenedorProductos.innerHTML = "";
 
     deposito.forEach(
         (producto) => {
             let contenedorCarta = crearCard(producto);
-            rowContenedorProductos.append(contenedorCarta);
+            contenedorProductos.append(contenedorCarta);
         }
-    )
-    deposito.forEach(producto => {
-        //evento para cada boton
-        document.getElementById(`btn${producto.id}`).addEventListener('click',function(){
-            agregarAlCarrito(producto);
-        });
-    });
+    );
+
 }
 
 
-// FUNCION PRINCIPAL
-dibujarCatalogoProductos();
-
-
-
-////ADMIN BOTON
-
-let adminPassword="";
-let miBotonAdmin=document.getElementById ("botonAdmin")
-miBotonAdmin.addEventListener ("click", ingresoAdmin)
-function ingresoAdmin () {
-    adminPassword=prompt("Ïngrese clave de admin (la clave es 1234)")
-    if (adminPassword==1234) {opciones(), dibujarCatalogoProductos();}
-    else {alert("Not admin")}
-}
-
-//
-
-////// CARRITO
-
-
-function agregarAlCarrito(producto){
-    carrito.push(producto);
-    console.log(carrito);
-    //agrego una fila nueva a la tabla body
-    document.getElementById("tablabody").innerHTML+=`
-        <tr>
-            <td>${producto.modelo}</td>
-            <td>${producto.precio}</td>
-        </tr>
-    `;
-    alert("Producto: "+producto.modelo+" agregado al carrito!");
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-}
+////

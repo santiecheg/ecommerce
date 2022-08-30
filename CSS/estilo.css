@@ -4,11 +4,17 @@
   margin: 0px;
 }
 
-body {
+.stars {
   background-image: url(https://images.unsplash.com/photo-1518066000714-58c45f1a2c0a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Nnx8fGVufDB8fHx8&w=1000&q=80);
   background-size: cover;
   background-position: center;
 }
+
+.theSun {
+  background-image: url(https://www.un.org/sites/un2.un.org/files/2021/09/the-sun-shining-brightly-over-knoxville-tennessee.jpg);
+}
+
+
 
 /*header*/
 header {
@@ -166,7 +172,10 @@ section {
   background-image: url(./Multimedia/call-center-CRM-estrategia.jpg);
   background-position: center;
 }
-
+.botoncarro {
+  position: sticky;
+  size: 8px;
+}
 .sectionimg4 {
   background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt1VUAVlnaHCWv76KlaSmeA85Ik-ffZdhfHw&usqp=CAU);
 }
@@ -178,6 +187,7 @@ section {
   color: whitesmoke;
   text-transform: uppercase;
 }
+
 
 .sectionCuerpo {
   padding: 1rem;
@@ -312,6 +322,13 @@ section {
 .item i {
   color: rgb(127, 164, 233);
   font-size: 4rem;
+}
+.aflotar {
+  text-decoration: none;
+  padding-right: 0.5rem;
+  color: rgb(189, 17, 17);
+  font-size: 3rem;
+
 }
 
 .fa-whatsapp {
@@ -451,3 +468,5 @@ section {
     font-size: 1.4rem;
   }
 }
+
+
